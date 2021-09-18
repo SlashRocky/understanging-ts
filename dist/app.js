@@ -1,17 +1,26 @@
 "use strict";
-let appId = "abc";
 const button = document.querySelector("button");
-function add(n1, n2) {
-    if (n1 + n2 > 0) {
-        return n1 + n2;
-    }
-    return;
-}
-function clickHandler(message) {
-    console.log("Clicked!" + message);
-}
 if (button) {
-    button.addEventListener("click", clickHandler.bind(null, "You're welcome!"));
+    button.addEventListener("click", (event) => {
+        console.log(event);
+    });
 }
-const map = new Map();
+const hobbies = ["Sports", "Cooking"];
+const activeHobbies = ["Hiking", ...hobbies];
+activeHobbies.push(...hobbies);
+const person = {
+    firstName: "Max",
+    age: 30,
+};
+const add = (...numbers) => {
+    return numbers.reduce((currentResult, currentValue) => {
+        return currentResult + currentValue;
+    }, 0);
+};
+const addedNumbers = add(3, 10, 2, 3.7);
+console.log(addedNumbers);
+const [hobby1, hobby2, ...remainingHobbies] = hobbies;
+console.log(hobbies, hobby1, hobby2);
+const { firstName: userName, age } = person;
+console.log(userName, age, person);
 //# sourceMappingURL=app.js.map
