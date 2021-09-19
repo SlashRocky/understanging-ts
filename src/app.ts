@@ -1,113 +1,51 @@
-// let userInput: unknown;
-// let userName: string;
-
-// userInput = 5;
-// userInput = "Max";
-
-// if (typeof userInput === "string") {
-//   userName = userInput;
+// type AddFn = (a: number, b: number) => number;
+// interface AddFn {
+//   (a: number, b: number): number;
 // }
 
-// function generateError(message: string, code: number): never {
-//   throw {
-//     message: message,
-//     errorCode: code,
-//   };
-//   // while(true) {}
-// }
+// let add: AddFn;
 
-// const result = generateError("エラーが発生しました。", 500);
-// console.log(result);
-
-// let age: number;
-// age = 30;
-// const userName = "Maximilian";
-// console.log(userName);
-
-// let appId = "abc";
-// const button = document.querySelector("button")!;
-
-// function add(n1: number, n2: number) {
-//   if (n1 + n2 > 0) {
-//     return n1 + n2;
-//   }
-//   return;
-// }
-
-// function clickHandler(message: string) {
-//   // let userName = "Max";
-//   console.log("Clicked!" + message);
-// }
-
-// if (button) {
-//   button.addEventListener("click", clickHandler.bind(null, "You're welcome!"));
-// }
-
-// const map = new Map();
-
-// let result;
-
-// function add(a: number, b: number) {
-//   result = a + b;
-//   return result;
-// }
-
-// const add = (a: number, b: number = 1) => a + b;
-
-// const printOutput: (output: string | number) => void = (output) => {
-//   console.log(output);
+// add = (n1: string, n2: number) => {
+//   return n1 + n2;
 // };
 
-// printOutput(add(2));
-
-const button = document.querySelector("button");
-if (button) {
-  button.addEventListener("click", (event) => {
-    console.log(event);
-  });
+interface Named {
+  readonly name?: string;
+  outputName?: string;
+}
+interface Greetable extends Named {
+  greet(phrase: string): void;
 }
 
-const hobbies = ["Sports", "Cooking"];
-const activeHobbies = ["Hiking", ...hobbies];
-activeHobbies.push(...hobbies);
+class Person implements Greetable {
+  name?: string;
+  age = 30;
 
-const person = {
-  firstName: "Max",
-  age: 30,
-};
+  constructor(n?: string) {
+    if (n) {
+      this.name = n;
+    }
+  }
+  greet(phrase: string) {
+    if (this.name) {
+      console.log(`${phrase} ${this.name}`);
+    } else {
+      console.log("Hi!");
+    }
+  }
+}
 
-// const copiedPerson = {
-//   ...person,
+let user1: Greetable;
+
+user1 = new Person();
+
+// user1 = {
+//   name: "Max",
+//   age: 30,
+//   greet(phrase: string) {
+//     console.log(`${phrase} ${this.name}`);
+//   },
 // };
 
-// const copiedPerson = person;
-
-// console.log(add(2, 5));
-
-// console.log(result);
-
-// let age = 30;
-// age = 29;
-
-// if (age >= 20) {
-//   let isAdult = true;
-// }
-// console.log(isAdult);
-
-const add = (...numbers: number[]) => {
-  return numbers.reduce((currentResult, currentValue) => {
-    return currentResult + currentValue;
-  }, 0);
-};
-
-const addedNumbers = add(3, 10, 2, 3.7);
-console.log(addedNumbers);
-
-// const hobby1 = hobbies[0];
-// const hobby2 = hobbies[1];
-
-const [hobby1, hobby2, ...remainingHobbies] = hobbies;
-console.log(hobbies, hobby1, hobby2);
-
-const { firstName: userName, age } = person;
-console.log(userName, age, person);
+user1.greet("Hello I am ");
+console.log(user1);
