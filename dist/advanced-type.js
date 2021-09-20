@@ -25,4 +25,4 @@ console.log((_a = fetchedUserData === null || fetchedUserData === void 0 ? void 
 const userInput = undefined;
 const storedData = userInput !== null && userInput !== void 0 ? userInput : "DEFAULT";
 console.log(storedData);
-//# sourceMappingURL=app.js.map
+//# sourceMappingURL=advanced-type.js.map
